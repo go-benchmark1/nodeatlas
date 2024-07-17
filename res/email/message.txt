@@ -1,0 +1,46 @@
+From: {{.From}}
+Subject: {{.Subject}}
+Date: {{.Header.Date}}
+To: {{.To}}
+Reply-To: {{.Data.ReplyTo}}
+MIME-version: 1.0
+Content-Type: multipart/alternative; boundary="========{{.Data.Boundary}}=="
+
+--========{{.Data.Boundary}}==
+Content-Type: text/plain; charset=us-ascii
+
+{{.Data.Message}}
+
+--
+This email was sent through NodeAtlas by another user because your
+node is listed on
+    {{.Data.Link}}
+
+If you choose to reply, make sure that you reply to
+    {{.Data.ReplyTo}}
+
+If this email was abusive or spam, please email
+    {{.Data.AdminContact.Name}} <{{.Data.AdminContact.Email}}> {{.Data.AdminContact.PGP}}
+
+https://github.com/ProjectMeshnet/nodeatlas
+
+--========{{.Data.Boundary}}==
+Content-Type: text/html; charset=UTF-8
+
+<p>{{html .Data.Message | markdownify}}</p>
+
+--<br/>
+This email was sent through NodeAtlas by another user because your
+node is listed on <a href="{{.Data.Link}}">{{.Data.Name}}</a>.<br/>
+
+If you choose to reply, make sure that you reply to <a
+href="mailto:{{.Data.ReplyTo}}">{{.Data.ReplyTo}}</a>.<br/>
+
+If this email was abusive or spam, please email
+{{.Data.AdminContact.Name}} 
+<a href="mailto:{{.Data.AdminContact.Email}}">{{.Data.AdminContact.Email}}</a> 
+{{.Data.AdminContact.PGP}} <br/>
+
+<a href="https://github.com/ProjectMeshnet/nodeatlas">NodeAtlas GitHub</a></br>
+
+--========{{.Data.Boundary}}==--

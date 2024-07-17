@@ -1,0 +1,67 @@
+{
+	"Name": "Meshnet",
+	"AdminContact":{
+		"Name": "John Doe",
+		"Email": "johndoe@example.com",
+		"PGP": "0123ABCD"
+		},
+	"AdminAddresses": [ "127.0.0.1" ],
+	"Web": {
+		"Hostname": "http://localhost",
+		"Prefix": "",
+		"Addr": "tcp://0.0.0.0:8077",
+		"DeproxyHeaderFields": [
+			"X-Forwarded-For",
+			"X-Real-Ip"
+		],
+		"HeaderSnippet": "<meta name='description' content='Federated node mapping for mesh networks.'>",
+		"AboutSnippet": "Contact the administrator of this map for help!",
+		"RSS": {
+			"MaxAge": "2h"
+		}
+	},
+	"ChildMaps": [],
+	"Database": {
+		"DriverName": "sqlite3",
+		"Resource": "example.db",
+		"ReadOnly": true
+	},
+	"HeartbeatRate": "10m",
+	"CacheExpiration": "168h",
+	"VerificationExpiration": "48h",
+	"ExtraVerificationFlags": "-6",
+	"SMTP": {
+		"VerifyDisabled": false,
+		"EmailAddress": "nodeatlas@example.com",
+		"Username": "nodeatlas",
+		"Password": "password123",
+		"NoAuthenticate": false,
+		"ServerAddress": "mail.example.com:587"
+	},
+	"Map": {
+		"Favicon": "nodeatlas.png",
+		"Tileserver": "http://{s}.tile.osm.org/{z}/{x}/{y}.png",
+		"Center": {
+			"Latitude": 40,
+			"Longitude": -100
+		},
+		"Zoom": 4,
+		"MaxZoom": 16,
+		"ClusterRadius": 50,
+		"Attribution": "© <a href=\"http://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors",
+		"AddressType": "Network-specific IP"
+	},
+	"Verify": {
+		"Netmask": "fc00::/8",
+		"FromNode": true
+	},
+	"NetworkAdmin": {
+		"Type": "cjdns",
+		"Credentials": {
+			"addr": "127.0.0.1",
+			"port": 11234,
+			"password": "adminpassword",
+			"config": "/etc/cjdroute.conf"
+		}
+	}
+}

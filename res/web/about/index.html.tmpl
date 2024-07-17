@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="https://github.com/ProjectMeshnet/nodeatlas">
+    <title>{{.Name}}</title>
+    <link rel="shortcut icon" href="/img/icon/{{.Map.Favicon}}">
+    <link rel="stylesheet" href="/assets/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <script type="text/javascript" src="/assets/jquery.min.js"></script>
+    <script type="text/javascript" src="/assets/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/common.js"></script>
+    {{.Web.HeaderSnippet}}
+  </head>
+  <body>
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-all">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">{{.Name}}</a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-all">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="/about/">About</a></li>
+            <li><a href="/">Map</a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+      <div class="container-fluid padding">
+        <div class="row padding">
+          <div class="col-xs-12 col-sm-6">
+            <h1>About NodeAtlas</h1>
+            <div class="row">
+              <div class="col-xs-12">
+                <p class="lead">How do you make sense of a meshnet? You map it.</p>
+                <p>This is an early release of the <a href="https://github.com/ProjectMeshnet/nodeatlas">NodeAtlas</a> meshnet map, proudly built with Go, Leaflet.js, and Bootstrap</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <h1>Admin Contact</h1>
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="alert alert-info">
+                  <p>{{.AdminContact.Name}} &lt;<a href="mailto:{{.AdminContact.Email}}">{{.AdminContact.Email}}</a>&gt; {{.AdminContact.PGP}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            {{.Web.AboutSnippet}}
+          </div>
+        </div>
+        <div class="row padding">
+          <div class="col-xs-12">
+            {{if .ChildMaps}}
+            <h4>Child Maps loaded:</h4>
+            {{end}}
+            {{range $i := .ChildMaps}}
+            <a href="{{$i}}">{{$i}}</a><br/>
+            {{end}}
+          </div>
+        </div>
+      </div>
+  </body>
+</html>
